@@ -1,0 +1,20 @@
+IEnumerator CaptureScreenshot()
+          { 
+         
+          yield return new WaitForEndOfFrame(); 
+          
+          string name = "/" + System.DateTime.Now.TimeOfDay.Hours + System.DateTime.Now.TimeOfDay.Minutes + System.DateTime.Now.TimeOfDay.Seconds + System.DateTime.Now.TimeOfDay.Milliseconds + ".jpg";
+          string path = Application.persistentDataPath + name;
+          Texture2D screenImage = new Texture2D(Screen.width, Screen.height); 
+          
+          //Get Image from screen 
+          screenImage.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+          screenImage.Apply();
+          
+          //Convert to png 
+          byte[] imageBytes = screenImage.EncodeToPNG(); 
+          
+          //Save image to file 
+          System.IO.File.WriteAllBytes(path, imageBytes);
+          
+          } 
