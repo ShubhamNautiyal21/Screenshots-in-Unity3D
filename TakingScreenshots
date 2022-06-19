@@ -3,7 +3,10 @@ IEnumerator CaptureScreenshot()
          
           yield return new WaitForEndOfFrame(); 
           
+          //Set name of the image captured
           string name = "/" + System.DateTime.Now.TimeOfDay.Hours + System.DateTime.Now.TimeOfDay.Minutes + System.DateTime.Now.TimeOfDay.Seconds + System.DateTime.Now.TimeOfDay.Milliseconds + ".jpg";
+          
+          //Set Path
           string path = Application.persistentDataPath + name;
           Texture2D screenImage = new Texture2D(Screen.width, Screen.height); 
           
